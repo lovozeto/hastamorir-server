@@ -1,0 +1,51 @@
+# Version of Docker compose file
+version: "3.6"
+
+# Apps
+services:
+  # Basics
+  portainer:
+      image: portainer/portainer-ce:latest
+      container_name: portainer
+      restart: always
+      command: -H unix:///var/run/docker.sock
+      ports:
+        - "9000:9000"
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+        - ${USERDIR}/portainer/data:/data
+        - ${USERDIR}/shared:/shared
+      environment:
+        - TZ=${TZ}
+  watchtower:
+      container_name: watchtower
+      restart: always
+      image: containrrr/watchtower:latest
+      volumes:
+        - /var/run/docker.sock:/var/run/docker.sock
+      command: --schedule "0 0 4 * * *" --cleanup
+  homebridge:
+    image: oznu/homebridge:ubuntu
+    container_name: homebridge
+    restart: always
+    network_mode: host
+    environment:
+      - HOMEBRIDGE_CONFIG_UI_PORT=8581
+    volumes:
+      - ./homebridge:/homebridge
+  adguardhome:
+      image: adguard/adguardhome
+      container_name: adguardhome
+      network_mode: bridge
+      ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 784:784/udp
+      - 853:853/tcp
+      - 3000:3000/tcp
+      - 80:80/tcp
+      - 443:443/tcp
+      volumes:
+        - ${USERDIR}/adguardhome/work:/opt/adguardhome/work
+        - ${USERDIR}/adguardhome/conf:/opt/adguardhome/conf
+      restart: unless-stopped
