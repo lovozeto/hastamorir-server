@@ -3,31 +3,34 @@ version: "3.6"
 
 # Apps
 services:
+
   # Download client
   transmission:
     image: linuxserver/transmission
     container_name: transmission
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID}
+      - PGID=${PGID}
       - TZ=${TZ}
-      - USER=wolf #optional
+      - USER=lobohastamorir #optional
       - PASS=huevos1 #optional
     volumes:
       - ${USERDIR}/transmission:/config
       - ${DOWNLOADDIR}:/downloads
-      - ${DOWNLOADDIR}/Watch:/watch
+      - ${DOWNLOADDIR}/watch:/watch
     ports:
       - 9091:9091
       - 51413:51413
       - 51413:51413/udp
     restart: unless-stopped
+
+  # Torrent provider
   jackett:
     image: linuxserver/jackett
     container_name: jackett
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID}
+      - PGID=${PGID}
       - TZ=${TZ}
       - AUTO_UPDATE=true #optional
     volumes:
