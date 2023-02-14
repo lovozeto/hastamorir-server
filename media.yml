@@ -1,26 +1,43 @@
 # Version of Docker compose file
-version: "3.6"
+version: "3"
 
 # Apps
 services:
+
+  # Media request
+  overseerr:
+    image: linuxserver/overseerr
+    container_name: overseerr
+    restart: unless-stopped
+    environment:
+      - LOG_LEVEL=info
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${USERDIR}/overseerr:/app/config
+    ports:
+      - 5055:5055
+
   # Media management
   sonarr:
     image: linuxserver/sonarr
     container_name: sonarr
+    restart: unless-stopped
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
     volumes:
       - ${USERDIR}/sonarr:/config
-      - ${MEDIADIR}/Series:/tv #optional
-      - ${DOWNLOADDIR}:/downloads #optional
+      - ${MEDIADIR}/Series:/tv
+      - ${DOWNLOADDIR}:/downloads
     ports:
       - 8989:8989
-    restart: unless-stopped
   radarr:
     image: linuxserver/radarr
     container_name: radarr
+    restart: unless-stopped
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -31,24 +48,24 @@ services:
       - ${DOWNLOADDIR}:/downloads #optional
     ports:
       - 7878:7878
-    restart: unless-stopped
   lidarr:
     image: linuxserver/lidarr
     container_name: lidarr
+    restart: unless-stopped
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
     volumes:
       - ${USERDIR}/lidarr:/config
-      - ${MEDIADIR}/Music:/music #optional
-      - ${DOWNLOADDIR}:/downloads #optional
+      - ${MEDIADIR}/Music:/music
+      - ${DOWNLOADDIR}:/downloads
     ports:
       - 8686:8686
-    restart: unless-stopped
   readarr:
-    image: linuxserver/readarr:develop
+    image: linuxserver/readarr
     container_name: readarr
+    restart: unless-stopped
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -59,10 +76,10 @@ services:
       - ${DOWNLOADDIR}:/downloads #optional
     ports:
       - 8787:8787
-    restart: unless-stopped
   bazarr:
     image: linuxserver/bazarr
     container_name: bazarr
+    restart: unless-stopped
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -73,50 +90,12 @@ services:
       - ${MEDIADIR}/Series:/tv #optional
     ports:
       - 6767:6767
-    restart: unless-stopped
-  calibre-web:
-    image: linuxserver/calibre-web
-    container_name: calibre-web
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-      - DOCKER_MODS=linuxserver/calibre-web:calibre #optional
-      - OAUTHLIB_RELAX_TOKEN_SCOPE=1 #optional
-    volumes:
-      - ${USERDIR}/calibre-web:/config
-      - ${MEDIADIR}/Books:/books
-      - ${DOWNLOADDIR}:/downloads #optional
-    ports:
-      - 8097:8083
-    restart: unless-stopped
-  overseerr:
-    image: sctx/overseerr:latest
-    container_name: overseerr
-    environment:
-      - LOG_LEVEL=debug
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    ports:
-      - 5055:5055
-    volumes:
-      - ${USERDIR}/overseerr:/app/config
-    restart: unless-stopped
+
+# Media Viewing
   plex:
     image: linuxserver/plex
-    container_name: plex-media
-    network_mode: bridge
-    ports:
-      - 32400:32400/tcp
-      - 3005:3005/tcp
-      - 8324:8324/tcp
-      - 32469:32469/tcp
-      - 1900:1900/udp
-      - 32410:32410/udp
-      - 32412:32412/udp
-      - 32413:32413/udp
-      - 32414:32414/udp
+    container_name: plex
+    network_mode: host
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
