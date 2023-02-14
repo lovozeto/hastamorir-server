@@ -1,31 +1,54 @@
 # Version of Docker compose file
-version: "3.6"
+version: "3"
 
 # Apps
 services:
-  # Basics
   homebridge:
-    image: oznu/homebridge:ubuntu
+    image: oznu/homebridge:latest
     container_name: homebridge
     restart: always
     network_mode: host
     environment:
-      - HOMEBRIDGE_CONFIG_UI_PORT=8581
+      - PGID=1000
+      - PUID=1000
+      - HOMEBRIDGE_CONFIG_UI=1
+      - HOMEBRIDGE_CONFIG_UI_PORT=8080
     volumes:
-      - ./homebridge:/homebridge
+      - ${USERDIR}/homebridge:/homebridge
+  hoobs:
+    image: hoobs/hoobs
+    container_name: hoobs
+    restart: always
+    network_mode: host
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    volumes:
+      - ${USERDIR}/hoobs:/hoobs
   adguardhome:
-      image: adguard/adguardhome
-      container_name: adguardhome
-      network_mode: bridge
-      ports:
-      - 53:53/tcp
-      - 53:53/udp
-      - 784:784/udp
-      - 853:853/tcp
-      - 3000:3000/tcp
-      - 80:80/tcp
-      - 443:443/tcp
-      volumes:
-        - ${USERDIR}/adguardhome/work:/opt/adguardhome/work
-        - ${USERDIR}/adguardhome/conf:/opt/adguardhome/conf
-      restart: unless-stopped
+    container_name: adguard-home
+    image: adguard/adguardhome
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp"
+      - "68:68/tcp"
+      - "68:68/udp"
+      - "80:80/tcp"
+      - "443:443/tcp"
+      - "853:853/tcp"
+      - "3000:3000/tcp"
+    volumes:
+      - ${USERDIR}/adguardhome/work:/opt/adguardhome/work
+      - ${USERDIR}/adguardhome/conf:/opt/adguardhome/conf
+    restart: unless-stopped
+  homeassistant:
+    container_name: home-assistant
+    image: homeassistant/home-assistant:stable
+    volumes:
+      - ${USERDIR}/homeassistant:/config
+    environment:
+      - TZ=${TZ}
+    restart: always
+    network_mode: host
