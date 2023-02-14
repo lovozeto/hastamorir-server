@@ -5,22 +5,21 @@ version: "3.6"
 services:
   # Basics
   portainer:
-      image: portainer/portainer-ce:latest
-      container_name: portainer
-      restart: always
-      command: -H unix:///var/run/docker.sock
-      ports:
-        - "9000:9000"
-      volumes:
-        - /var/run/docker.sock:/var/run/docker.sock
-        - ${USERDIR}/portainer/data:/data
-        - ${USERDIR}/shared:/shared
-      environment:
-        - TZ=${TZ}
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: always
+    ports:
+      - 9000:9000
+      - 8000:8000
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ${USERDIR}/portainer/data:/data
+    environment:
+      - TZ=${TZ}
   watchtower:
-      container_name: watchtower
-      restart: always
-      image: containrrr/watchtower:latest
-      volumes:
-        - /var/run/docker.sock:/var/run/docker.sock
-      command: --schedule "0 0 4 * * *" --cleanup
+    container_name: watchtower
+    restart: always
+    image: containrrr/watchtower:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --schedule "0 0 4 * * *" --cleanup
