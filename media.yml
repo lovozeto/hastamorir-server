@@ -8,8 +8,8 @@ services:
     image: linuxserver/sonarr
     container_name: sonarr
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID}
+      - PGID=${PGID}
       - TZ=${TZ}
     volumes:
       - ${USERDIR}/sonarr:/config
@@ -22,8 +22,8 @@ services:
     image: linuxserver/radarr
     container_name: radarr
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID}
+      - PGID=${PGID}
       - TZ=${TZ}
     volumes:
       - ${USERDIR}/radarr:/config
@@ -36,8 +36,8 @@ services:
     image: linuxserver/lidarr
     container_name: lidarr
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID}
+      - PGID=${PGID}
       - TZ=${TZ}
     volumes:
       - ${USERDIR}/lidarr:/config
@@ -50,8 +50,8 @@ services:
     image: linuxserver/readarr:develop
     container_name: readarr
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID}
+      - PGID=${PGID}
       - TZ=${TZ}
     volumes:
       - ${USERDIR}/readarr:/config
@@ -64,8 +64,8 @@ services:
     image: linuxserver/bazarr
     container_name: bazarr
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID}
+      - PGID=${PGID}
       - TZ=${TZ}
     volumes:
       - ${USERDIR}/bazarr:/config
@@ -78,8 +78,8 @@ services:
     image: linuxserver/calibre-web
     container_name: calibre-web
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID}
+      - PGID=${PGID}
       - TZ=${TZ}
       - DOCKER_MODS=linuxserver/calibre-web:calibre #optional
       - OAUTHLIB_RELAX_TOKEN_SCOPE=1 #optional
@@ -95,6 +95,8 @@ services:
     container_name: overseerr
     environment:
       - LOG_LEVEL=debug
+      - PUID=${PUID}
+      - PGID=${PGID}
       - TZ=${TZ}
     ports:
       - 5055:5055
@@ -116,20 +118,11 @@ services:
       - 32413:32413/udp
       - 32414:32414/udp
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID}
+      - PGID=${PGID}
       - VERSION=docker
       - PLEX_CLAIM=claim-fEN1RgqeP8g8kCMQzvzV
     volumes:
       - ${USERDIR}/plex:/config
       - ${MEDIADIR}:/media
     restart: unless-stopped
-  homeassistant:
-    container_name: homeassistant
-    image: "ghcr.io/home-assistant/home-assistant:stable"
-    volumes:
-      - /PATH_TO_YOUR_CONFIG:/config
-      - /etc/localtime:/etc/localtime:ro
-    restart: unless-stopped
-    privileged: true
-    network_mode: host
