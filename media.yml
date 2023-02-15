@@ -63,7 +63,7 @@ services:
     ports:
       - 8686:8686
   readarr:
-    image: linuxserver/readarr
+    image: linuxserver/readarr:develop
     container_name: readarr
     restart: unless-stopped
     environment:
