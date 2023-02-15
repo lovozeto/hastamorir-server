@@ -1,5 +1,5 @@
 # Version of Docker compose file
-version: "3.6"
+version: "3"
 
 # Apps
 services:

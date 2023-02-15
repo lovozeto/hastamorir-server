@@ -1,0 +1,30 @@
+{
+    "server": {
+        "port": 80,
+        "origin": "*",
+        "autostart": 0,
+        "home_setup_id": "X-HM://",
+        "polling_seconds": 5
+    },
+    "client": {
+        "default_route": "status",
+        "inactive_logoff": 30,
+        "theme": "hoobs-dark",
+        "locale": "en",
+        "temp_units": "fahrenheit",
+        "country_code": "US",
+        "postal_code": "94040"
+    },
+    "bridge": {
+        "name": "HOOBS",
+        "port": 51826,
+        "pin": "031-45-154",
+        "username": "4E:04:C7:A7:D1:B7"
+    },
+    "description": "",
+    "ports": {},
+    "plugins": [],
+    "accessories": [],
+    "platforms": [],
+    "package_manager": "npm"
+}
