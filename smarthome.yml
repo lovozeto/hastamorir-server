@@ -12,7 +12,7 @@ services:
       - PGID=1000
       - PUID=1000
       - HOMEBRIDGE_CONFIG_UI=1
-      - HOMEBRIDGE_CONFIG_UI_PORT=8080
+      - HOMEBRIDGE_CONFIG_UI_PORT=8085
     volumes:
       - ${USERDIR}/homebridge:/homebridge
   hoobs:
@@ -26,6 +26,10 @@ services:
       - TZ=${TZ}
     volumes:
       - ${USERDIR}/hoobs:/hoobs
+    ports:
+      - 8080:8080
+      - 8181:8181
+      - 51826:51826
   adguardhome:
     container_name: adguard-home
     image: adguard/adguardhome
@@ -43,12 +47,10 @@ services:
     restart: unless-stopped
   homeassistant:
     container_name: home-assistant
-    image: homeassistant/home-assistant:stable
+    image: "ghcr.io/home-assistant/home-assistant:stable"
     volumes:
       - ${USERDIR}/homeassistant:/config
-    environment:
-      - TZ=${TZ}
-    ports:
-      - 8123:8123
-    restart: always
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+    privileged: true
     network_mode: host
