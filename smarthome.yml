@@ -3,17 +3,17 @@ version: "3"
 
 # Apps
 services:
-  homebridge:
-    image: oznu/homebridge:ubuntu
-    container_name: homebridge
-    restart: always
-    network_mode: host
-    environment:
-      - HOMEBRIDGE_CONFIG_UI_PORT=8581
-    ports:
-      - 8581:8581
-    volumes:
-      - ${USERDIR}/homebridge:/homebridge
+# homebridge:
+#   image: oznu/homebridge:ubuntu
+#   container_name: homebridge
+#   restart: always
+#   network_mode: host
+#   environment:
+#     - HOMEBRIDGE_CONFIG_UI_PORT=8581
+#   ports:
+#     - 8581:8581
+#   volumes:
+#     - ${USERDIR}/homebridge:/homebridge
   hoobs:
     image: hoobs/hoobs
     container_name: hoobs
