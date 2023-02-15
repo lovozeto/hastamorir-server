@@ -4,15 +4,12 @@ version: "3"
 # Apps
 services:
   homebridge:
-    image: oznu/homebridge:latest
+    image: oznu/homebridge:ubuntu
     container_name: homebridge
     restart: always
     network_mode: host
     environment:
-      - PGID=1000
-      - PUID=1000
-      - HOMEBRIDGE_CONFIG_UI=1
-      - HOMEBRIDGE_CONFIG_UI_PORT=8085
+      - HOMEBRIDGE_CONFIG_UI_PORT=8581
     volumes:
       - ${USERDIR}/homebridge:/homebridge
   hoobs:
