@@ -48,5 +48,7 @@ services:
       - ${USERDIR}/homeassistant:/config
     environment:
       - TZ=${TZ}
+    ports:
+      - 8123:8123
     restart: always
     network_mode: host
