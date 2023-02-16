@@ -33,7 +33,7 @@ services:
       - ${MEDIADIR}/Series:/tv
       - ${DOWNLOADDIR}:/downloads
     ports:
-      - 8989:8989
+      - 8989:8289
   radarr:
     image: linuxserver/radarr
     container_name: radarr
