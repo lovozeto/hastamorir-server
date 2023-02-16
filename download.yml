@@ -14,6 +14,7 @@ services:
       - TZ=${TZ}
       - USER=lobohastamorir #optional
       - PASS=huevos1 #optional
+      - TRANSMISSION_WEB_HOME=/combustion-release/
     volumes:
       - ${USERDIR}/transmission:/config
       - ${DOWNLOADDIR}:/downloads

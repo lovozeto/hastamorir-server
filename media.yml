@@ -15,7 +15,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
     volumes:
-      - ${USERDIR}/overseerr:/app/config
+      - ${USERDIR}/overseerr:/config/
     ports:
       - 5055:5055
 
@@ -30,10 +30,10 @@ services:
       - TZ=${TZ}
     volumes:
       - ${USERDIR}/sonarr:/config
-      - ${MEDIADIR}/Series:/tv
-      - ${DOWNLOADDIR}:/downloads
+      - ${MEDIADIR}/series:/media/series
+      - ${DOWNLOADDIR}:/media/downloads
     ports:
-      - 8989:8289
+      - 8989:8989
     network_mode: bridge
   radarr:
     image: linuxserver/radarr
@@ -45,11 +45,10 @@ services:
       - TZ=${TZ}
     volumes:
       - ${USERDIR}/radarr:/config
-      - ${MEDIADIR}/Movies:/movies #optional
-      - ${DOWNLOADDIR}:/downloads #optional
+      - ${MEDIADIR}/movies:/media/movies #optional
+      - ${DOWNLOADDIR}:/media/downloads #optional
     ports:
       - 7878:7878
-      - 8989:8289
     network_mode: bridge
   lidarr:
     image: linuxserver/lidarr
@@ -61,11 +60,10 @@ services:
       - TZ=${TZ}
     volumes:
       - ${USERDIR}/lidarr:/config
-      - ${MEDIADIR}/Music:/music
-      - ${DOWNLOADDIR}:/downloads
+      - ${MEDIADIR}/music:/media/music
+      - ${DOWNLOADDIR}:/media/downloads
     ports:
       - 8686:8686
-      - 8989:8289
     network_mode: bridge
   readarr:
     image: linuxserver/readarr:develop
@@ -77,11 +75,10 @@ services:
       - TZ=${TZ}
     volumes:
       - ${USERDIR}/readarr:/config
-      - ${MEDIADIR}/Books:/books #optional
-      - ${DOWNLOADDIR}:/downloads #optional
+      - ${MEDIADIR}/books:/media/books #optional
+      - ${DOWNLOADDIR}:/media/downloads #optional
     ports:
       - 8787:8787
-      - 8989:8289
     network_mode: bridge
   bazarr:
     image: linuxserver/bazarr
@@ -93,11 +90,10 @@ services:
       - TZ=${TZ}
     volumes:
       - ${USERDIR}/bazarr:/config
-      - ${MEDIADIR}/Movies:/movies #optional
-      - ${MEDIADIR}/Series:/tv #optional
+      - ${MEDIADIR}/movies:/media/movies #optional
+      - ${MEDIADIR}/series:/media/series #optional
     ports:
       - 6767:6767
-      - 8989:8289
     network_mode: bridge
 
 # Media Viewing

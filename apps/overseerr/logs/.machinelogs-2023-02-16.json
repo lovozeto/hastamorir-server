@@ -1,0 +1,17 @@
+{"level":"info","message":"Commit Tag: v1.32.5","timestamp":"2023-02-16T06:20:08.517Z"}
+{"level":"info","message":"Starting Overseerr version 1.32.5","timestamp":"2023-02-16T06:20:08.888Z"}
+{"label":"Notifications","level":"info","message":"Registered notification agents","timestamp":"2023-02-16T06:20:10.191Z"}
+{"label":"Jobs","level":"info","message":"Scheduled jobs loaded","timestamp":"2023-02-16T06:20:10.223Z"}
+{"label":"Discover Slider","level":"info","message":"Creating built-in discovery slider","slider":{"enabled":true,"isBuiltIn":true,"order":0,"type":1},"timestamp":"2023-02-16T06:20:10.230Z"}
+{"label":"Discover Slider","level":"info","message":"Creating built-in discovery slider","slider":{"enabled":true,"isBuiltIn":true,"order":1,"type":2},"timestamp":"2023-02-16T06:20:10.246Z"}
+{"label":"Discover Slider","level":"info","message":"Creating built-in discovery slider","slider":{"enabled":true,"isBuiltIn":true,"order":2,"type":3},"timestamp":"2023-02-16T06:20:10.250Z"}
+{"label":"Discover Slider","level":"info","message":"Creating built-in discovery slider","slider":{"enabled":true,"isBuiltIn":true,"order":3,"type":4},"timestamp":"2023-02-16T06:20:10.254Z"}
+{"label":"Discover Slider","level":"info","message":"Creating built-in discovery slider","slider":{"enabled":true,"isBuiltIn":true,"order":4,"type":5},"timestamp":"2023-02-16T06:20:10.257Z"}
+{"label":"Discover Slider","level":"info","message":"Creating built-in discovery slider","slider":{"enabled":true,"isBuiltIn":true,"order":5,"type":6},"timestamp":"2023-02-16T06:20:10.261Z"}
+{"label":"Discover Slider","level":"info","message":"Creating built-in discovery slider","slider":{"enabled":true,"isBuiltIn":true,"order":6,"type":7},"timestamp":"2023-02-16T06:20:10.265Z"}
+{"label":"Discover Slider","level":"info","message":"Creating built-in discovery slider","slider":{"enabled":true,"isBuiltIn":true,"order":7,"type":8},"timestamp":"2023-02-16T06:20:10.268Z"}
+{"label":"Discover Slider","level":"info","message":"Creating built-in discovery slider","slider":{"enabled":true,"isBuiltIn":true,"order":8,"type":9},"timestamp":"2023-02-16T06:20:10.274Z"}
+{"label":"Discover Slider","level":"info","message":"Creating built-in discovery slider","slider":{"enabled":true,"isBuiltIn":true,"order":9,"type":10},"timestamp":"2023-02-16T06:20:10.278Z"}
+{"label":"Discover Slider","level":"info","message":"Creating built-in discovery slider","slider":{"enabled":true,"isBuiltIn":true,"order":10,"type":11},"timestamp":"2023-02-16T06:20:10.281Z"}
+{"label":"Discover Slider","level":"info","message":"Creating built-in discovery slider","slider":{"enabled":true,"isBuiltIn":true,"order":11,"type":12},"timestamp":"2023-02-16T06:20:10.284Z"}
+{"label":"Server","level":"info","message":"Server ready on port 5055","timestamp":"2023-02-16T06:20:10.420Z"}
