@@ -14,21 +14,6 @@ services:
 #     - 8581:8581
 #   volumes:
 #     - ${USERDIR}/homebridge:/homebridge
-  hoobs:
-    image: hoobs/hoobs
-    container_name: hoobs
-    restart: always
-    network_mode: host
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    volumes:
-      - ${USERDIR}/hoobs:/hoobs
-    ports:
-      - 8080:8080
-      - 8181:8181
-      - 51826:51826
   adguardhome:
     container_name: adguard-home
     image: adguard/adguardhome
