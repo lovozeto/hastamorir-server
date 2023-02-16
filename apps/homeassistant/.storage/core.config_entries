@@ -1,0 +1,324 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "core.config_entries",
+  "data": {
+    "entries": [
+      {
+        "entry_id": "139b395dfeca6a102cf137a6b241e778",
+        "version": 1,
+        "domain": "sun",
+        "title": "Sun",
+        "data": {},
+        "options": {},
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "import",
+        "unique_id": null,
+        "disabled_by": null
+      },
+      {
+        "entry_id": "cda2e968f5cd6b7ee57bb55e94db7422",
+        "version": 1,
+        "domain": "wemo",
+        "title": "Wemo",
+        "data": {},
+        "options": {},
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "homekit",
+        "unique_id": "wemo",
+        "disabled_by": null
+      },
+      {
+        "entry_id": "58116ff683b401e72c3a8d1c79d36f6d",
+        "version": 1,
+        "domain": "sonos",
+        "title": "Sonos",
+        "data": {},
+        "options": {},
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "zeroconf",
+        "unique_id": "sonos",
+        "disabled_by": null
+      },
+      {
+        "entry_id": "76c2192b6cec410e14f8090ef3fc65ef",
+        "version": 1,
+        "domain": "met",
+        "title": "Home",
+        "data": {
+          "track_home": true
+        },
+        "options": {},
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "onboarding",
+        "unique_id": null,
+        "disabled_by": null
+      },
+      {
+        "entry_id": "c3516a71ce44ab5c727bb4f47fe0ee01",
+        "version": 1,
+        "domain": "radio_browser",
+        "title": "Radio Browser",
+        "data": {},
+        "options": {},
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "onboarding",
+        "unique_id": null,
+        "disabled_by": null
+      },
+      {
+        "entry_id": "b58789c5814121e65f0b65038a6b57b1",
+        "version": 2,
+        "domain": "samsungtv",
+        "title": "Curved TV (UN55RU7300KXZL)",
+        "data": {
+          "host": "192.168.4.51",
+          "mac": "24:fc:e5:58:0d:70",
+          "manufacturer": "Samsung Electronics",
+          "method": "websocket",
+          "model": "UN55RU7300KXZL",
+          "name": "Curved TV",
+          "port": 8002,
+          "ssdp_rendering_control_location": "http://192.168.4.51:9197/dmr",
+          "ssdp_main_tv_agent_location": null,
+          "token": "60934638"
+        },
+        "options": {},
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "ssdp",
+        "unique_id": "aa35397c-8e4c-421c-ab85-313f384d8939",
+        "disabled_by": null
+      },
+      {
+        "entry_id": "54d5053e4655fed9ee40a40a6b5ef7b5",
+        "version": 1,
+        "domain": "dlna_dmr",
+        "title": "[TV] Curved TV",
+        "data": {
+          "url": "http://192.168.4.51:9197/dmr",
+          "device_id": "uuid:30a01578-aaec-40f0-b7fd-2e62aa9c3db6",
+          "type": "urn:schemas-upnp-org:device:MediaRenderer:1",
+          "mac": null
+        },
+        "options": {},
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "ignore",
+        "unique_id": "uuid:30a01578-aaec-40f0-b7fd-2e62aa9c3db6",
+        "disabled_by": null
+      },
+      {
+        "entry_id": "9a59b93b5f69f6810d8c60ab3d92c7b6",
+        "version": 1,
+        "domain": "apple_tv",
+        "title": "Studio (HomePod Mini)",
+        "data": {
+          "address": "192.168.4.47"
+        },
+        "options": {},
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "ignore",
+        "unique_id": "04:99:B9:77:25:02",
+        "disabled_by": null
+      },
+      {
+        "entry_id": "3070b71c645638e49dc8176b1a00c2b1",
+        "version": 1,
+        "domain": "apple_tv",
+        "title": "Bedroom (3) (Apple TV 4K (gen2))",
+        "data": {
+          "address": "192.168.4.39"
+        },
+        "options": {},
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "ignore",
+        "unique_id": "9C:3E:53:29:64:27",
+        "disabled_by": null
+      },
+      {
+        "entry_id": "a745ea8ac1e2736ebb6f724ca8c988f4",
+        "version": 1,
+        "domain": "apple_tv",
+        "title": "Bedroom (2) (HomePod Mini)",
+        "data": {
+          "address": "192.168.4.78"
+        },
+        "options": {},
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "ignore",
+        "unique_id": "94:EA:32:85:23:4C",
+        "disabled_by": null
+      },
+      {
+        "entry_id": "f62fe65822c4339b306413580fac8167",
+        "version": 1,
+        "domain": "apple_tv",
+        "title": "Living Room (Apple TV 4K)",
+        "data": {
+          "address": "192.168.4.49"
+        },
+        "options": {},
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "ignore",
+        "unique_id": "50:DE:06:9D:C1:6E",
+        "disabled_by": null
+      },
+      {
+        "entry_id": "2e234514d83af3eb6fb7d6c454c7bf90",
+        "version": 1,
+        "domain": "apple_tv",
+        "title": "Bedroom (HomePod Mini)",
+        "data": {
+          "address": "192.168.4.77"
+        },
+        "options": {},
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "ignore",
+        "unique_id": "F4:34:F0:09:87:69",
+        "disabled_by": null
+      },
+      {
+        "entry_id": "bbe7ec45cf59e49c221f920ab44d1dc0",
+        "version": 1,
+        "domain": "apple_tv",
+        "title": "Guest Room (HomePod Mini)",
+        "data": {
+          "address": "192.168.4.48"
+        },
+        "options": {},
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "ignore",
+        "unique_id": "F4:34:F0:80:96:7D",
+        "disabled_by": null
+      },
+      {
+        "entry_id": "1b60c735d1fddd1557244eddd458b413",
+        "version": 1,
+        "domain": "upnp",
+        "title": "eero",
+        "data": {
+          "udn": "uuid:fcdb9233-a63f-41da-b42c-7cfeb99c8adf",
+          "st": "urn:schemas-upnp-org:device:InternetGatewayDevice:1",
+          "original_udn": "uuid:fcdb9233-a63f-41da-b42c-7cfeb99c8adf",
+          "mac_address": null,
+          "host": "192.168.4.1",
+          "location": "http://192.168.4.1:1900/igd.xml"
+        },
+        "options": {},
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "ignore",
+        "unique_id": "uuid:fcdb9233-a63f-41da-b42c-7cfeb99c8adf::urn:schemas-upnp-org:device:InternetGatewayDevice:1",
+        "disabled_by": null
+      },
+      {
+        "entry_id": "ed229170b9f994f530b704d054b1e7cf",
+        "version": 1,
+        "domain": "homekit",
+        "title": "HASS Bridge:21064",
+        "data": {
+          "name": "HASS Bridge",
+          "exclude_accessory_mode": true,
+          "port": 21064
+        },
+        "options": {
+          "filter": {
+            "include_domains": [
+              "alarm_control_panel",
+              "climate",
+              "cover",
+              "humidifier",
+              "fan",
+              "light",
+              "lock",
+              "remote",
+              "switch",
+              "vacuum",
+              "water_heater",
+              "sensor"
+            ],
+            "exclude_domains": [],
+            "include_entities": [],
+            "exclude_entities": []
+          },
+          "mode": "bridge"
+        },
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "user",
+        "unique_id": null,
+        "disabled_by": null
+      },
+      {
+        "entry_id": "1f088000a70d65b64328ab637de8f311",
+        "version": 1,
+        "domain": "homekit",
+        "title": "Curved TV:21066",
+        "data": {
+          "port": 21066,
+          "name": "Curved TV"
+        },
+        "options": {
+          "filter": {
+            "include_domains": [],
+            "exclude_domains": [],
+            "include_entities": [
+              "media_player.curved_tv"
+            ],
+            "exclude_entities": []
+          },
+          "mode": "accessory"
+        },
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "accessory",
+        "unique_id": null,
+        "disabled_by": null
+      },
+      {
+        "entry_id": "254f31d984b8c3663fb534d69c669d19",
+        "version": 1,
+        "domain": "mobile_app",
+        "title": "Esteban’s iPhone",
+        "data": {
+          "app_version": "2023.2 (2023.444)",
+          "app_data": {
+            "push_token": "cexMEg7VWksFgsK3VxUWo2:APA91bGfVvxzvxEXXoOqIn5CMzFqelPhhvjbPK5_PFobcO4pFCOs6_LaKBjHh8FL2X1YG2pbhOJt5yOlD7HVNDsruQwYkWHFnArMP6eIAoWvXyEyl9q2qlK7oPNORAuc9c-rboVqfzeE",
+            "push_url": "https://mobile-apps.home-assistant.io/api/sendPushNotification"
+          },
+          "app_id": "io.robbie.HomeAssistant",
+          "model": "iPhone15,3",
+          "device_id": "7499FE13-42BC-4194-A1AA-9E843602D5FA",
+          "device_name": "Esteban’s iPhone",
+          "manufacturer": "Apple",
+          "os_version": "16.3.1",
+          "app_name": "Home Assistant",
+          "os_name": "iOS",
+          "supports_encryption": true,
+          "webhook_id": "a35e9a8c181407eaba9b7fecc456d57e955183e7251912db4e8a62c66730ae80",
+          "secret": "ef4cc16848f23e9b2b65f46f817d2531b6544e97571f3376a6141744f1778237",
+          "user_id": "9e812af35c674c01a86c195cbcd6ab18",
+          "no_legacy_encryption": true
+        },
+        "options": {},
+        "pref_disable_new_entities": false,
+        "pref_disable_polling": false,
+        "source": "registration",
+        "unique_id": "io.robbie.HomeAssistant-7499FE13-42BC-4194-A1AA-9E843602D5FA",
+        "disabled_by": null
+      }
+    ]
+  }
+}

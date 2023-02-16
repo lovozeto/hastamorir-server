@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "minor_version": 3,
+  "key": "core.area_registry",
+  "data": {
+    "areas": [
+      {
+        "aliases": [],
+        "name": "Living Room",
+        "id": "living_room",
+        "picture": null
+      },
+      {
+        "aliases": [],
+        "name": "Kitchen",
+        "id": "kitchen",
+        "picture": null
+      },
+      {
+        "aliases": [],
+        "name": "Bedroom",
+        "id": "bedroom",
+        "picture": null
+      },
+      {
+        "aliases": [],
+        "name": "Guest Room",
+        "id": "guest_room",
+        "picture": null
+      },
+      {
+        "aliases": [],
+        "name": "Studio",
+        "id": "studio",
+        "picture": null
+      },
+      {
+        "aliases": [],
+        "name": "Hallway",
+        "id": "hallway",
+        "picture": null
+      }
+    ]
+  }
+}

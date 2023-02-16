@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "minor_version": 1,
+  "key": "homekit.ed229170b9f994f530b704d054b1e7cf.aids",
+  "data": {
+    "allocations": {
+      "wemo.switch.221802K010E2E4": 2747651438,
+      "wemo.switch.221736K0101D97": 2209474383,
+      "mobile_app.sensor.a35e9a8c181407eaba9b7fecc456d57e955183e7251912db4e8a62c66730ae80_connectivity_ssid": 1800232707,
+      "mobile_app.sensor.a35e9a8c181407eaba9b7fecc456d57e955183e7251912db4e8a62c66730ae80_storage": 3491803177,
+      "mobile_app.sensor.a35e9a8c181407eaba9b7fecc456d57e955183e7251912db4e8a62c66730ae80_battery_level": 450059868,
+      "mobile_app.sensor.a35e9a8c181407eaba9b7fecc456d57e955183e7251912db4e8a62c66730ae80_battery_state": 3864964867,
+      "mobile_app.sensor.a35e9a8c181407eaba9b7fecc456d57e955183e7251912db4e8a62c66730ae80_connectivity_sim_1": 2287947291,
+      "mobile_app.sensor.a35e9a8c181407eaba9b7fecc456d57e955183e7251912db4e8a62c66730ae80_connectivity_sim_2": 2304724910,
+      "mobile_app.sensor.a35e9a8c181407eaba9b7fecc456d57e955183e7251912db4e8a62c66730ae80_geocoded_location": 2417927310,
+      "mobile_app.sensor.a35e9a8c181407eaba9b7fecc456d57e955183e7251912db4e8a62c66730ae80_last_update_trigger": 3318004551,
+      "mobile_app.sensor.a35e9a8c181407eaba9b7fecc456d57e955183e7251912db4e8a62c66730ae80_connectivity_bssid": 4040893737,
+      "mobile_app.sensor.a35e9a8c181407eaba9b7fecc456d57e955183e7251912db4e8a62c66730ae80_connectivity_connection_type": 3211803325,
+      "mobile_app.sensor.a35e9a8c181407eaba9b7fecc456d57e955183e7251912db4e8a62c66730ae80_activity": 68773269,
+      "mobile_app.sensor.a35e9a8c181407eaba9b7fecc456d57e955183e7251912db4e8a62c66730ae80_pedometer_floors_descended": 1280610731,
+      "mobile_app.sensor.a35e9a8c181407eaba9b7fecc456d57e955183e7251912db4e8a62c66730ae80_pedometer_floors_ascended": 3291637355,
+      "mobile_app.sensor.a35e9a8c181407eaba9b7fecc456d57e955183e7251912db4e8a62c66730ae80_pedometer_distance": 2927798863,
+      "mobile_app.sensor.a35e9a8c181407eaba9b7fecc456d57e955183e7251912db4e8a62c66730ae80_pedometer_steps": 2292588095,
+      "mobile_app.sensor.a35e9a8c181407eaba9b7fecc456d57e955183e7251912db4e8a62c66730ae80_pedometer_avg_active_pace": 2235784683
+    }
+  }
+}
