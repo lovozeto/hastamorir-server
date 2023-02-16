@@ -65,6 +65,7 @@ services:
       - ${DOWNLOADDIR}:/downloads
     ports:
       - 8686:8686
+      - 8989:8289
     network_mode: bridge
   readarr:
     image: linuxserver/readarr:develop
@@ -80,6 +81,7 @@ services:
       - ${DOWNLOADDIR}:/downloads #optional
     ports:
       - 8787:8787
+      - 8989:8289
     network_mode: bridge
   bazarr:
     image: linuxserver/bazarr
@@ -95,6 +97,7 @@ services:
       - ${MEDIADIR}/Series:/tv #optional
     ports:
       - 6767:6767
+      - 8989:8289
     network_mode: bridge
 
 # Media Viewing
