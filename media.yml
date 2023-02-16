@@ -34,7 +34,7 @@ services:
       - ${DOWNLOADDIR}:/downloads
     ports:
       - 8989:8289
-    network_mode: bridged
+    network_mode: bridge
   radarr:
     image: linuxserver/radarr
     container_name: radarr
@@ -49,7 +49,7 @@ services:
       - ${DOWNLOADDIR}:/downloads #optional
     ports:
       - 7878:7878
-    network_mode: bridged
+    network_mode: bridge
   lidarr:
     image: linuxserver/lidarr
     container_name: lidarr
@@ -64,7 +64,7 @@ services:
       - ${DOWNLOADDIR}:/downloads
     ports:
       - 8686:8686
-    network_mode: bridged
+    network_mode: bridge
   readarr:
     image: linuxserver/readarr:develop
     container_name: readarr
@@ -79,7 +79,7 @@ services:
       - ${DOWNLOADDIR}:/downloads #optional
     ports:
       - 8787:8787
-    network_mode: bridged
+    network_mode: bridge
   bazarr:
     image: linuxserver/bazarr
     container_name: bazarr
@@ -94,7 +94,7 @@ services:
       - ${MEDIADIR}/Series:/tv #optional
     ports:
       - 6767:6767
-    network_mode: bridged
+    network_mode: bridge
 
 # Media Viewing
   plex:

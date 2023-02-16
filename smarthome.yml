@@ -29,6 +29,7 @@ services:
       - ${USERDIR}/adguardhome/work:/opt/adguardhome/work
       - ${USERDIR}/adguardhome/conf:/opt/adguardhome/conf
     restart: unless-stopped
+
   homeassistant:
     container_name: home-assistant
     image: linuxserver/homeassistant:latest
