@@ -24,6 +24,14 @@ services:
       - 51413:51413
       - 51413:51413/udp
     restart: unless-stopped
+    
+  jdownloader-2:
+    image: jlesage/jdownloader-2
+    ports:
+      - "5800:5800"
+    volumes:
+      - ${USERDIR}/jdownloader-2:/config:rw
+      - ${DOWNLOADDIR}/jdownloader:/output:rw
 
   # Torrent provider
   jackett:
