@@ -14,9 +14,10 @@ services:
       - TZ=${TZ}
       - USER=lobohastamorir #optional
       - PASS=huevos1 #optional
-      - TRANSMISSION_WEB_HOME=/combustion-release/
+      - TRANSMISSION_WEB_HOME=/combustion-ui/
     volumes:
       - ${USERDIR}/transmission:/config
+      - ${USERDIR}/transmission/combustion-ui:/combustion-ui
       - ${DOWNLOADDIR}:/downloads
       - ${DOWNLOADDIR}/watch:/watch
     ports:
