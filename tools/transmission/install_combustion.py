@@ -14,7 +14,7 @@ def download_combustion_ui(version):
     """Downloads the specified version of combustion UI."""
 
     latest_version = get_latest_combustion_ui_version()
-    url = "https://github.com/combustion-ui/combustion-ui/releases/download/{}/combustion-ui-{}.zip".format(latest_version, latest_version)
+    url = "https://github.com/combustion-ui/combustion-ui/releases/download/{"latest"}/combustion-ui-{"latest"}.zip".format(latest_version, latest_version)
     subprocess.run(["curl", "-o", "combustion-ui.zip", url])
 
 def install_combustion_ui():
