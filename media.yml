@@ -3,7 +3,6 @@ version: "3"
 
 # Apps
 services:
-
   # Media request
   overseerr:
     image: linuxserver/overseerr
@@ -65,21 +64,6 @@ services:
     ports:
       - 8686:8686
     network_mode: bridge
-  readarr:
-    image: linuxserver/readarr:develop
-    container_name: readarr
-    restart: unless-stopped
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    volumes:
-      - ${USERDIR}/readarr:/config
-      - ${MEDIADIR}/books:/media/books #optional
-      - ${DOWNLOADDIR}:/media/downloads #optional
-    ports:
-      - 8787:8787
-    network_mode: bridge
   bazarr:
     image: linuxserver/bazarr
     container_name: bazarr
@@ -96,7 +80,7 @@ services:
       - 6767:6767
     network_mode: bridge
 
-# Media Viewing
+  # Media Viewing
   plex:
     image: linuxserver/plex
     container_name: plex

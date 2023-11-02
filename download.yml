@@ -17,7 +17,6 @@ services:
       - TRANSMISSION_WEB_HOME=/combustion-release/
     volumes:
       - ${USERDIR}/transmission:/config
-      - ${USERDIR}/transmission/combustion-ui:/combustion-release
       - ${DOWNLOADDIR}:/downloads
       - ${DOWNLOADDIR}/watch:/watch
     ports:
@@ -27,7 +26,6 @@ services:
     restart: unless-stopped
     
   jdownloader-2:
-    container_name: jdownloader
     image: jlesage/jdownloader-2
     ports:
       - "5800:5800"

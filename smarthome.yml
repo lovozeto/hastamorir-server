@@ -3,17 +3,18 @@ version: "3"
 
 # Apps
 services:
- homebridge:
-   image: oznu/homebridge:ubuntu
-   container_name: homebridge
-   restart: always
-   network_mode: host
-   environment:
-     - HOMEBRIDGE_CONFIG_UI_PORT=8581
-   ports:
-     - 8581:8581
-   volumes:
-     - ${USERDIR}/homebridge:/homebridge
+  homebridge:
+    image: oznu/homebridge:ubuntu
+    container_name: homebridge
+    restart: always
+    network_mode: host
+    environment:
+      - HOMEBRIDGE_CONFIG_UI_PORT=8581
+    ports:
+      - 8581:8581
+    volumes:
+      - ${USERDIR}/homebridge:/homebridge
+
   adguardhome:
     container_name: adguard-home
     image: adguard/adguardhome
@@ -38,9 +39,7 @@ services:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
-#    ports:
-#      - 8123:8123
     volumes:
-      - ${USERDIR}/home-assistant:/config
+      - ${USERDIR}/homeassistant:/config
       - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
