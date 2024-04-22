@@ -7,6 +7,10 @@ services:
     image: homebridge/homebridge:latest
     restart: always
     network_mode: host
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
     volumes:
       - ${USERDIR}/homebridge:/homebridge
     logging:
