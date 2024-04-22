@@ -94,3 +94,5 @@ services:
       - ${USERDIR}/plex:/config
       - ${MEDIADIR}:/media
     restart: unless-stopped
+    ports:
+      - 32400:32400
