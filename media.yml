@@ -20,6 +20,7 @@ services:
 
   # Media management
   filebrowser:
+    container_name: filebrowser
     image: filebrowser/filebrowser:s6
     volumes:
       - ${MEDIADIR}:/srv:rw  # Maps host directory to container directory with read-write access
@@ -60,21 +61,6 @@ services:
       - ${DOWNLOADDIR}:/media/downloads #optional
     ports:
       - 7878:7878
-    network_mode: bridge
-  lidarr:
-    image: linuxserver/lidarr
-    container_name: lidarr
-    restart: unless-stopped
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    volumes:
-      - ${USERDIR}/lidarr:/config
-      - ${MEDIADIR}/music:/media/music
-      - ${DOWNLOADDIR}:/media/downloads
-    ports:
-      - 8686:8686
     network_mode: bridge
   bazarr:
     image: linuxserver/bazarr
