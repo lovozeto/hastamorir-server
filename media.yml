@@ -32,7 +32,7 @@ services:
       - ${MEDIADIR}/series:/media/series
       - ${DOWNLOADDIR}:/media/downloads
     ports:
-      - 8989:8989
+      - 38989:8989
     network_mode: bridge
   radarr:
     image: linuxserver/radarr
@@ -76,7 +76,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
     ports:
-      - "8080:80"
+      - 8080:80
   
   #Media Editing
   makemkv:
@@ -88,14 +88,14 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
     ports:
-      - "5800:5800"  # Maps host port 5800 to container port 5800
+      - 35800:5800  # Maps host port 5800 to container port 5800
     volumes:
       - ${USERDIR}/makemkv:/config:rw  # Persistent storage for configuration
       - ${DOWNLOADDIR}:/storage:ro  # Read-only access to user storage directory
       - ${MEDIADIR}/MakeMKV/output:/output:rw  # Persistent storage for output files
-    devices:
-      - /dev/sr0:/dev/sr0  # Pass through the first optical drive
-      - /dev/sg2:/dev/sg2
+    #devices:
+     # - /dev/sr0:/dev/sr0  # Pass through the first optical drive
+     # - #/dev/sg2:/dev/sg2
 
   # Media Viewing
   plex:
@@ -122,7 +122,7 @@ services:
       - PGID=${PGID}
       - TZ=${TZ}
     ports:
-      - '8409:8409'
+      - 8409:8409
     volumes:
       - '${USERDIR}/ersatztv:/root/.local/share/ersatztv'
       - '${MEDIADIR}:/media:ro'
