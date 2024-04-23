@@ -19,19 +19,6 @@ services:
       - 5055:5055
 
   # Media management
-  filebrowser:
-    container_name: filebrowser
-    image: filebrowser/filebrowser:s6
-    volumes:
-      - ${MEDIADIR}:/srv:rw  # Maps host directory to container directory with read-write access
-      - {USERDIR}/filebrowser/filebrowser.db:/database/filebrowser.db:rw  # Persistent storage for database file
-      - {USERDIR}/filebrowser/settings.json:/config/settings.json:ro  # Read-only mount for configuration file
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    ports:
-      - "8080:80"
   sonarr:
     image: linuxserver/sonarr
     container_name: sonarr
@@ -77,6 +64,19 @@ services:
     ports:
       - 6767:6767
     network_mode: bridge
+  filebrowser:
+    container_name: filebrowser
+    image: filebrowser/filebrowser:s6
+    volumes:
+      - ${MEDIADIR}:/srv:rw
+      - ${USERDIR}/filebrowser/filebrowser.db:/database/filebrowser.db:rw
+      - ${USERDIR}/filebrowser/settings.json:/config/settings.json:ro
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    ports:
+      - "8080:80"
   
   #Media Editing
   makemkv:
@@ -90,7 +90,7 @@ services:
     ports:
       - "5800:5800"  # Maps host port 5800 to container port 5800
     volumes:
-      - docker/appdata/makemkv:/config:rw  # Persistent storage for configuration
+      - ${USERDIR}/makemkv:/config:rw  # Persistent storage for configuration
       - ${DOWNLOADDIR}:/storage:ro  # Read-only access to user storage directory
       - ${MEDIADIR}/MakeMKV/output:/output:rw  # Persistent storage for output files
     devices:
