@@ -16,10 +16,3 @@ services:
       - ${USERDIR}/portainer/data:/data
     environment:
       - TZ=${TZ}
-  watchtower:
-    container_name: watchtower
-    restart: always
-    image: containrrr/watchtower:latest
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: --schedule "0 0 4 * * *" --cleanup
