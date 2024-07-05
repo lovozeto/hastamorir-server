@@ -19,6 +19,18 @@ services:
         max-size: "10mb"
         max-file: "1"
 
+  hoobs:
+    container_name: hoobs
+    image: hoobs/hoobs
+    volumes:
+      - /home/pi/hoobs:/hoobs
+    network_mode: host
+    restart: always
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+
   homeassistant:
     container_name: home-assistant
     image: linuxserver/homeassistant:latest
