@@ -1,8 +1,0 @@
-{
-	"auths": {},
-	"HttpHeaders": {
-		"X-PortainerAgent-ManagerOperation": "1",
-		"X-PortainerAgent-PublicKey": "3059301306072a8648ce3d020106082a8648ce3d030107034200044c1dcff06e3f96d80ebd2da611ca186bdedefccee37e50e15adcff1f6b3bcdee51886d7040b8f6accd54f787ae24df668b7e259ec15f9a789936e86db5a00dc3",
-		"X-PortainerAgent-Signature": "3XaLI15eoFcfFz8MriqMO2t3cb4S4+K8F8nfM/1qzD+7fbAtOpAWs3H/7TObG35KQFplrvj6J7fUKX1BEiBWaw"
-	}
-}

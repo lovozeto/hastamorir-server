@@ -1,1 +1,0 @@
-# hastamorir-server
