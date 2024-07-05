@@ -49,6 +49,7 @@ services:
     ports:
       - 7878:7878
     network_mode: bridge
+
   bazarr:
     image: linuxserver/bazarr
     container_name: bazarr
@@ -64,19 +65,6 @@ services:
     ports:
       - 6767:6767
     network_mode: bridge
-  filebrowser:
-    container_name: filebrowser
-    image: filebrowser/filebrowser:s6
-    volumes:
-      - ${MEDIADIR}:/srv:rw
-      - ${USERDIR}/filebrowser/filebrowser.db:/database/filebrowser.db:rw
-      - ${USERDIR}/filebrowser/settings.json:/config/settings.json:ro
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    ports:
-      - 8080:80
   
   #Media Editing
   makemkv:
@@ -101,7 +89,6 @@ services:
   plex:
     image: linuxserver/plex
     container_name: plex
-    network_mode: host
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -113,17 +100,3 @@ services:
     restart: unless-stopped
     ports:
       - 32400:32400
-
-  ersatztv:
-    image: 'jasongdove/ersatztv:latest-vaapi'
-    container_name: ersatztv
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    ports:
-      - 8409:8409
-    volumes:
-      - '${USERDIR}/ersatztv:/root/.local/share/ersatztv'
-      - '${MEDIADIR}:/media:ro'
-    restart: unless-stopped

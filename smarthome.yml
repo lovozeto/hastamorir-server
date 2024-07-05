@@ -3,101 +3,43 @@ version: "3"
 
 # Apps
 services:
-  # Media request
-  overseerr:
-    image: linuxserver/overseerr
-    container_name: overseerr
-    restart: unless-stopped
+  homebridge:
+    image: homebridge/homebridge:latest
+    restart: always
+    network_mode: host
     environment:
-      - LOG_LEVEL=info
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
     volumes:
-      - ${USERDIR}/overseerr:/config/
-    ports:
-      - 5055:5055
+      - ${USERDIR}/homebridge:/homebridge
+    logging:
+      driver: json-file
+      options:
+        max-size: "10mb"
+        max-file: "1"
 
-  # Media management
-  sonarr:
-    image: linuxserver/sonarr
-    container_name: sonarr
-    restart: unless-stopped
+  hoobs:
+    container_name: hoobs
+    image: hoobs/hoobs
+    volumes:
+      - /home/pi/hoobs:/hoobs
+    network_mode: host
+    restart: always
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
-    volumes:
-      - ${USERDIR}/sonarr:/config
-      - ${MEDIADIR}/series:/media/series
-      - ${DOWNLOADDIR}:/media/downloads
-    ports:
-      - 38989:8989
-    network_mode: bridge
-  radarr:
-    image: linuxserver/radarr
-    container_name: radarr
-    restart: unless-stopped
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    volumes:
-      - ${USERDIR}/radarr:/config
-      - ${MEDIADIR}/movies:/media/movies #optional
-      - ${DOWNLOADDIR}:/media/downloads #optional
-    ports:
-      - 7878:7878
-    network_mode: bridge
 
-  bazarr:
-    image: linuxserver/bazarr
-    container_name: bazarr
-    restart: unless-stopped
+  homeassistant:
+    container_name: home-assistant
+    image: linuxserver/homeassistant:latest
+    network_mode: host
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
       - TZ=${TZ}
     volumes:
-      - ${USERDIR}/bazarr:/config
-      - ${MEDIADIR}/movies:/media/movies #optional
-      - ${MEDIADIR}/series:/media/series #optional
-    ports:
-      - 6767:6767
-    network_mode: bridge
-  
-  #Media Editing
-  makemkv:
-    image: jlesage/makemkv
-    container_name: makemkv
-    restart: unless-stopped  # Optional, restarts container on failure
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    ports:
-      - 35800:5800  # Maps host port 5800 to container port 5800
-    volumes:
-      - ${USERDIR}/makemkv:/config:rw  # Persistent storage for configuration
-      - ${DOWNLOADDIR}:/storage:ro  # Read-only access to user storage directory
-      - ${MEDIADIR}/MakeMKV/output:/output:rw  # Persistent storage for output files
-    #devices:
-     # - /dev/sr0:/dev/sr0  # Pass through the first optical drive
-     # - #/dev/sg2:/dev/sg2
-
-  # Media Viewing
-  plex:
-    image: linuxserver/plex
-    container_name: plex
-
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - VERSION=docker
-      - PLEX_CLAIM=claim-fEN1RgqeP8g8kCMQzvzV
-    volumes:
-      - ${USERDIR}/plex:/config
-      - ${MEDIADIR}:/media
+      - ${USERDIR}/homeassistant:/config
+      - /etc/localtime:/etc/localtime:ro
     restart: unless-stopped
-    ports:
-      - 32400:32400
