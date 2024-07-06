@@ -1,0 +1,12 @@
+[Unit]
+Description=Mount internal drive at startup
+DefaultDependencies=no
+After=local-fs.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/mount_script.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=default.target
