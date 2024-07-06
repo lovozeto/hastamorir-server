@@ -24,6 +24,6 @@ sudo mount $D1T $F1T
 sudo mount $D12T $F12T
 
 # Change the owner of the mount point (optional)
-sudo chown $USER:$USER $FAPPS
-sudo chown $USER:$USER $F1T
-sudo chown $USER:$USER $F12T
+sudo chown -R $USER:$USER $FAPPS
+sudo chown -R $USER:$USER $F1T
+sudo chown -R $USER:$USER $F12T
