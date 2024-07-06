@@ -1,6 +1,6 @@
 PUID=1000
 PGID=1000
 TZ="America/Bogota"
-USERDIR="/media/lobomorir/apps/app-config/"
-DOWNLOADDIR="/media/lobomorir/media/downloads"
-MEDIADIR="/media/lobomorir/media/libary"
+USERDIR="/media/lobomorir/Apps/app-config/"
+DOWNLOADDIR="/media/lobomorir/mediaDisk12/Downloads"
+MEDIADIR="/media/lobomorir/mediaDisk12/Libary"
