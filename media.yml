@@ -34,6 +34,7 @@ services:
     ports:
       - 38989:8989
     network_mode: bridge
+    
   radarr:
     image: linuxserver/radarr
     container_name: radarr

@@ -1,26 +1,29 @@
 #!/bin/bash
 
 # Define the folder and the drive to mount
-FOLDER_TO_DELETE="/path/to/folder"
-DEVICE_TO_MOUNT="/dev/sdX"
-MOUNT_POINT="/path/to/folder"
+FAPPS="/media/lobomorir/Apps"
+F1T="/media/lobomorir/mediaDisk1T"
+F12T="/media/lobomorir/mediaDisk12T"
+DAPPS="/dev/sda1"
+D1T="/dev/sdb1"
+D12T="/dev/sdc1"
 
 # Delete the folder
-sudo rm -rf $FOLDER_TO_DELETE
-sudo rm -rf $FOLDER_TO_DELETE
-sudo rm -rf $FOLDER_TO_DELETE
+sudo rm -rf $FAPPS
+sudo rm -rf $F1T
+sudo rm -rf $F12T
 
 # Create the mount point
-sudo mkdir -p $MOUNT_POINT
-sudo mkdir -p $MOUNT_POINT
-sudo mkdir -p $MOUNT_POINT
+sudo mkdir -p $FAPPS
+sudo mkdir -p $F1T
+sudo mkdir -p $F12T
 
 # Mount the drive
-sudo mount $DEVICE_TO_MOUNT $MOUNT_POINT
-sudo mount $DEVICE_TO_MOUNT $MOUNT_POINT
-sudo mount $DEVICE_TO_MOUNT $MOUNT_POINT
+sudo mount $DAPPS $FAPPS
+sudo mount $D1T $F1T
+sudo mount $D12T $F12T
 
 # Change the owner of the mount point (optional)
-sudo chown $USER:$USER $MOUNT_POINT
-sudo chown $USER:$USER $MOUNT_POINT
-sudo chown $USER:$USER $MOUNT_POINT
+sudo chown $USER:$USER $FAPPS
+sudo chown $USER:$USER $F1T
+sudo chown $USER:$USER $F12T
