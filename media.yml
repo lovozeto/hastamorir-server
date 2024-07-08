@@ -34,7 +34,7 @@ services:
     ports:
       - 38989:8989
     network_mode: bridge
-    
+
   radarr:
     image: linuxserver/radarr
     container_name: radarr
@@ -90,6 +90,7 @@ services:
   plex:
     image: linuxserver/plex
     container_name: plex
+    network_mode: host
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -101,3 +102,17 @@ services:
     restart: unless-stopped
     ports:
       - 32400:32400
+
+  ersatztv:
+    image: jasongdove/ersatztv:latest-vaapi
+    container_name: ersatztv
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+    ports:
+      - 8409:8409
+    volumes:
+      - ${USERDIR}/ersatztv:/root/.local/share/ersatztv
+      - ${MEDIADIR}:/media:ro
+    restart: unless-stopped
