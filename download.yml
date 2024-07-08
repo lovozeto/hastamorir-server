@@ -17,8 +17,8 @@ services:
 
     volumes:
       - ${USERDIR}/transmission:/config
-      - ${DOWNLOADDIR}:/downloads
-      - ${DOWNLOADDIR}/watch:/watch
+      - ${DOWNLOADDIR}:/media/downloads
+      - ${DOWNLOADDIR}/watch:/media/watch
     ports:
       - 9091:9091
       - 51413:51413
