@@ -13,7 +13,7 @@ sudo apt install -y curl
 
 # Setup mount script
 show_status "Setting up Mount Script"
-sudo curl -o /usr/local/bin/mount_script.sh https://raw.githubusercontent.com/yourusername/your-repo/main/mount_script.sh
+sudo curl -o /usr/local/bin/mount_script.sh https://raw.githubusercontent.com/lovozeto/hastamorir-server/main/tools/ubuntu/mount_script.sh?token=GHSAT0AAAAAACSYBXVQZ73JUY5Y647KIYVIZUMLDYA
 sudo chmod +x /usr/local/bin/mount_script.sh
 
 # Setup mount service
