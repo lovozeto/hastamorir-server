@@ -5,8 +5,8 @@ FAPPS="/media/lobomorir/Apps"
 F1T="/media/lobomorir/mediaDisk1T"
 F12T="/media/lobomorir/mediaDisk12T"
 DAPPS="/dev/sda1"
-D1T="/dev/sdb1"
-D12T="/dev/sdc1"
+D1T="/dev/sdb2"
+D12T="/dev/sdc2"
 
 # Delete the folder
 sudo rm -rf $FAPPS
