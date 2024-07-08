@@ -1,0 +1,35 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  create_release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "accounts@lovozeto.com"  # Replace with your email
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          files: |
+            tools/ubuntu/setup.sh
+            tools/ubuntu/github_install.sh
+            tools/ubuntu/docker_setup.sh
+            tools/ubuntu/portainer_setup.sh
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: Automated release created by GitHub Actions
+          draft: false
+          prerelease: false

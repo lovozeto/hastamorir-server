@@ -1,3 +1,82 @@
+# Media Server Setup
+
+## Overview
+
+This repository contains scripts and configurations to automate the setup of a Media Server on Ubuntu.
+
+## Getting Started
+
+### Prerequisites
+
+- Ubuntu 20.04 LTS
+- Docker
+- Docker Compose
+
+### Setup
+
+1. **Automating Mounting External Drives:**
+
+   - Download `mount_script.sh`:
+     ```bash
+     sudo curl -o /usr/local/bin/mount_script.sh https://raw.githubusercontent.com/yourusername/your-repo/main/mount_script.sh
+     sudo chmod +x /usr/local/bin/mount_script.sh
+     ```
+
+   - Download `mount_script.service`:
+     ```bash
+     sudo curl -o /etc/systemd/system/mount_script.service https://raw.githubusercontent.com/yourusername/your-repo/main/mount_script.service
+     sudo systemctl daemon-reload
+     sudo systemctl enable mount_script.service
+     sudo systemctl start mount_script.service
+     ```
+
+2. **Setting Up Docker and Docker Compose:**
+
+   - Install Docker:
+     ```bash
+     sudo apt-get update
+     sudo apt-get install -y docker.io
+     sudo systemctl start docker
+     sudo systemctl enable docker
+     ```
+
+   - Install Docker Compose:
+     ```bash
+     sudo apt-get install -y docker-compose
+     ```
+
+3. **Deploying Portainer:**
+
+   - Create a `docker-compose.yml` (e.g., `base.yml`) with the following content:
+     ```yaml
+     version: '3'
+
+     services:
+       portainer:
+         image: portainer/portainer
+         ports:
+           - "9000:9000"
+         volumes:
+           - /var/run/docker.sock:/var/run/docker.sock
+           - portainer_data:/data
+
+     volumes:
+       portainer_data:
+     ```
+
+   - Start Portainer:
+     ```bash
+     docker-compose -f base.yml up -d
+     ```
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+
+
+
+
 # Mount Internal Drive at Startup on Ubuntu
 
 This guide provides steps to create a script that will:

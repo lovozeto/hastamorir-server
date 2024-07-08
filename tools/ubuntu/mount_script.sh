@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Define the folder and the drive to mount
 FAPPS="/media/lobomorir/Apps"
 F12T="/media/lobomorir/mediaDisk12T"
@@ -7,9 +5,6 @@ F1T="/media/lobomorir/mediaDisk12T/Library/movies-1T"
 DAPPS="/dev/sda1"
 D1T="/dev/sdb2"
 D12T="/dev/sdc2"
-
-# Stop Docker
-sudo systemctl stop docker
 
 # Delete the folder
 sudo rm -rf $FAPPS
@@ -30,6 +25,3 @@ sudo mount $D1T $F1T
 sudo chown -R $USER:$USER $FAPPS
 sudo chown -R $USER:$USER $F12T
 sudo chown -R $USER:$USER $F1T
-
-# Start Docker
-sudo systemctl start docker
