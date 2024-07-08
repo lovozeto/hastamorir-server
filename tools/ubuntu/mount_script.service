@@ -1,7 +1,8 @@
 [Unit]
-Description=Mount internal drive at startup
+Description=Mount internal drives at startup
 DefaultDependencies=no
 After=local-fs.target
+Before=docker.service
 
 [Service]
 Type=oneshot

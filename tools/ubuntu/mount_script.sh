@@ -8,6 +8,9 @@ DAPPS="/dev/sda1"
 D1T="/dev/sdb2"
 D12T="/dev/sdc2"
 
+# Stop Docker
+sudo systemctl stop docker
+
 # Delete the folder
 sudo rm -rf $FAPPS
 sudo rm -rf $F12T
@@ -27,3 +30,6 @@ sudo mount $D1T $F1T
 sudo chown -R $USER:$USER $FAPPS
 sudo chown -R $USER:$USER $F12T
 sudo chown -R $USER:$USER $F1T
+
+# Start Docker
+sudo systemctl start docker
