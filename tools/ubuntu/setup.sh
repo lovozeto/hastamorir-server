@@ -44,4 +44,16 @@ sudo curl -o portainer_setup.sh https://raw.githubusercontent.com/lovozeto/hasta
 sudo chmod +x portainer_setup.sh
 ./portainer_setup.sh
 
+#Setup SAMBA
+sudo apt update
+sudo apt install samba samba-common nautilus-share
+nautilus -q
+sudo nano /etc/samba/smb.conf
+sudo systemctl restart smbd
+sudo systemctl restart nmbd
+sudo mkdir -p /var/lib/samba/usershares
+sudo chown root:sambashare /var/lib/samba/usershares
+sudo chmod 1770 /var/lib/samba/usershares
+sudo usermod -aG sambashare $USER
+
 echo "Setup completed successfully!"
