@@ -11,3 +11,18 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     command: --schedule "0 0 4 * * *" --cleanup
+
+  tailscale:
+    image: tailscale/tailscale
+    container_name: tailscale
+    hostname: tailscale-docker
+    restart: unless-stopped
+    privileged: true
+    network_mode: "host"  # Needed for subnet routing & exit node
+    volumes:
+      - /var/lib/tailscale:/var/lib/tailscale
+      - /dev/net/tun:/dev/net/tun  # Required for VPN functionality
+    environment:
+      - TS_AUTHKEY=tskey-auth-your-key  # Replace with your Tailscale auth key
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_EXTRA_ARGS=--advertise-routes=192.168.86.0/24 --advertise-exit-node
