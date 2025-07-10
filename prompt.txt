@@ -1,0 +1,102 @@
+You are a senior Linux automation engineer.
+Use only official Ubuntu Autoinstall documentation, cloud-init, and reputable online best practices.
+Your task is to generate a complete, valid `user-data` YAML file that fully automates an unattended installation of the latest Ubuntu LTS server.
+
+**Goals:**
+
+1️⃣ **Disk & Filesystem**
+   - Wipe the entire NVMe drive.
+   - Use a standard, clean Linux filesystem layout suitable only for running the OS and Plex server software.
+   - Do not allocate extra storage for media files — all media will reside on an external NAS share mounted via SMB.
+   - Remove any unnecessary partitions or unused packages.
+
+2️⃣ **System Identity**
+   - Hostname: `Lobomorir-Server`
+   - Create a single user:
+     - Full name: `EsteJuan`
+     - Username: `estejuan`
+     - Use SSH key-based login.
+     - Add to all necessary groups for Plex, hardware transcoding, or secure remote access (e.g., `sudo`, `video`).
+   - Enable automatic security updates.
+   - Follow best practices for initial server hardening and secure SSH.
+
+3️⃣ **Plex Media Server**
+   - Research and choose the **most robust, friction-free, well-maintained installation method** for Plex on Ubuntu LTS (Snap vs. .deb) that is officially supported.
+   - Install Plex accordingly.
+   - Automount the external NAS share via SMB at boot:
+     - NAS hostname: `lobomorir-nas.local`
+     - Share name: `Media`
+     - Use a secure credentials file.
+     - Mount at the best practice location for persistent network shares (e.g., `/mnt/media` or `/srv/media`) following Ubuntu conventions.
+   - Ensure Plex does not run if the share is unavailable (e.g., using `RequiresMountsFor` or an equivalent method).
+   - Configure Plex for secure remote streaming outside the local network.
+   - **Install and configure any additional components** (codecs, drivers, libraries) required for Plex to:
+     - Read and write common media containers (e.g., MKV, MP4).
+     - Decode/encode common video/audio codecs (e.g., H.264, H.265, AAC) within licensing limits.
+     - Perform hardware transcoding with Intel Quick Sync where supported.
+   - Follow Ubuntu best practices for adding restricted codecs: use only officially supported repos or legally distributable open-source packages.
+   - Keep the system clean: install only what is necessary for robust media playback, transcoding, and streaming.
+
+4️⃣ **Intel Quick Sync Hardware Transcoding**
+   - Detect if Intel hardware support is available.
+   - Install any required drivers, packages, or firmware for Quick Sync (e.g., `intel-media-driver`, `libva`).
+   - Ensure the Plex service user has the correct permissions and is added to the `video` group.
+   - Verify permissions on `/dev/dri` and any related VA-API configuration.
+   - Add checks or scripts to confirm hardware transcoding works correctly.
+   - Remove any unnecessary drivers or conflicting tools.
+
+5️⃣ **Remote Desktop Access (Mac Friendly)**
+   - Set up reliable RDP and VNC access that works well from a Mac:
+     - Use the best-known, well-supported RDP server (e.g., `xrdp`) and configure it to launch a full GNOME session properly.
+     - Use the best-known, stable VNC server (e.g., `TigerVNC`) with secure password-based login.
+     - Add any necessary `.xsession` or systemd overrides to ensure sessions launch reliably.
+   - Make sure only the required remote desktop packages are installed — no redundant or conflicting tools.
+   - Verify the firewall allows only the correct remote desktop ports.
+   - Follow best practices for securing remote connections.
+
+6️⃣ **Firewall & Security**
+   - Enable the system firewall (`ufw` or the standard Ubuntu tool).
+   - Open only the required ports for:
+     - SSH access
+     - Plex remote streaming
+     - Remote desktop (RDP and VNC)
+   - Deny all other incoming traffic by default.
+   - Remove any unnecessary open ports, services, or packages.
+   - Follow official Ubuntu server hardening guidance.
+
+7️⃣ **Automation & Best Practices**
+   - Use only officially supported tools: `cloud-init`, bash, systemd, `ufw`, standard Ubuntu packages.
+   - Include robust `late-commands` to:
+     - Install only required packages.
+     - Create mount points and secure credentials files for the NAS share.
+     - Configure the SMB mount in `/etc/fstab` or as best practice suggests.
+     - Add systemd overrides so Plex depends on the NAS mount.
+     - Install any required codecs/drivers for Plex to handle diverse media types.
+     - Enable and configure the firewall with only the needed ports open.
+     - Remove any unused or legacy configs.
+   - Use valid YAML syntax with correct indentation.
+   - Add `# comments` explaining each YAML section and script.
+   - Provide any needed helper files (e.g., systemd unit drop-ins, `.xsession`, `~/.vnc/xstartup`).
+
+8️⃣ **Definition of Success**
+   - The system wipes the NVMe drive, installs Ubuntu unattended, and configures everything correctly.
+   - The system remains clean, minimal, and secure — no extra packages or open ports.
+   - The NAS share `Media` hosted on `lobomorir-nas.local` mounts automatically at boot in the best practice location.
+   - Plex does not run unless the NAS share is available.
+   - Plex can read, write, transcode, and stream a wide variety of media formats.
+   - Hardware transcoding works correctly with Intel Quick Sync.
+   - Plex can stream media securely outside the local network.
+   - RDP and VNC connections from a Mac work reliably and securely.
+   - The firewall is enabled with only the required ports open.
+
+**Expectations**
+   - Think step-by-step: check the official Ubuntu autoinstall YAML schema and recommended syntax.
+   - Research and confirm the best, most maintained installer for Plex, GitHub Desktop, required codecs, remote desktop tools, and Intel drivers.
+   - Remove any redundant, legacy, or unneeded configs or packages.
+   - Use practical, real-world examples from reputable sources to make the setup robust, stable, and repeatable.
+   - Provide a simple test checklist for verifying the entire workflow in a VM before deploying on real hardware.
+
+**Constraints**
+   - Use only standard Ubuntu LTS methods and tools.
+   - Do not use third-party config managers like Ansible or Chef.
+   - Deliver a single valid `user-data` YAML plus any needed systemd overrides, helper files, or script snippets.
