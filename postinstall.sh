@@ -3,8 +3,8 @@ set -Eeuo pipefail
 
 # ======================================================
 # POSTINSTALL UBUNTU DESKTOP MINIMAL - PLEX + TDARR NATIVO
-# Incluye: Backups, Xorg forzado (no Wayland), XRDP/VNC OK, 
-#           montaje seguro de NAS, Flatpak, VLC, autoinicio Tdarr/Plex
+# Pro, modular, seguro, auto-actualizable desde releases de GitHub.
+# Repo: https://github.com/lovozeto/hastamorir-server
 # ======================================================
 
 USERNAME="estejuan"
@@ -85,7 +85,6 @@ ensure_group_user() {
 }
 
 check_desktop_minimal() {
-  # Devuelve 0 si es minimal (sin gnome-shell, etc)
   if dpkg -l | grep -q gnome-shell; then return 1; else return 0; fi
 }
 
@@ -297,4 +296,27 @@ if [[ "$ONLY" == "" || "$ONLY" == "$step" ]] && ! step_done "$step"; then
   echo "Revisa el log en $LOGFILE"
   echo "Reinicia tu equipo para asegurar que todos los servicios y montajes funcionen correctamente."
   mark_done "$step"
+fi
+
+# ========== Instalar y programar auto-updater ==============
+GITHUB_REPO="lovozeto/hastamorir-server"
+ASSET_NAME="update-plex-tdarr.sh"
+INSTALL_PATH="/usr/local/bin/$ASSET_NAME"
+
+log "Descargando y configurando auto-updater Plex/Tdarr (último release)..."
+LATEST_TAG=$(curl -s https://api.github.com/repos/$GITHUB_REPO/releases/latest | grep -Po '"tag_name": "\K.*?(?=")')
+if [[ -z "$LATEST_TAG" ]]; then
+  warn "No se pudo obtener el release más reciente. Auto-updater NO instalado."
+else
+  ASSET_URL="https://github.com/$GITHUB_REPO/releases/download/$LATEST_TAG/$ASSET_NAME"
+  sudo curl -L -o "$INSTALL_PATH" "$ASSET_URL"
+  sudo chmod +x "$INSTALL_PATH"
+
+  # Agregar a cron (domingo 3am) solo si no está ya programado
+  if ! sudo crontab -l 2>/dev/null | grep -q "$ASSET_NAME"; then
+    (sudo crontab -l 2>/dev/null; echo "0 3 * * 0 $INSTALL_PATH") | sudo crontab -
+    log "Auto-updater programado para ejecutarse semanalmente (domingo 3am)."
+  else
+    log "Auto-updater ya está programado en cron."
+  fi
 fi
