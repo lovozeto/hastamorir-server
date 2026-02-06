@@ -4,9 +4,9 @@ services:
     container_name: nginx-proxy-manager
     restart: unless-stopped
     ports:
-      - "80:80"
+      - "81:80"
       - "443:443"
-      - "127.0.0.1:81:81"   # Admin UI SOLO local (usa Tailscale/SSH para entrar)
+#     - "192.168.86.47:81:81"  # Admin UI SOLO local (usa Tailscale/SSH para entrar)
     volumes:
       - /home/estejuan/infra/data/npm:/data
       - /home/estejuan/infra/data/npm/letsencrypt:/etc/letsencrypt
